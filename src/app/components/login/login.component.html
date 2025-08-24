@@ -1,0 +1,71 @@
+<div class="parent">
+  <div class="container">
+    <div class="left-section"></div>
+    <div class="right-section">
+      <div class="login-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
+          
+          <!-- Error Message -->
+          <div *ngIf="isLoginFailed" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+          
+          <div class="form-control">
+            <i class="fas fa-user icon"></i>
+            <input 
+              formControlName="username" 
+              type="text" 
+              placeholder="Username" 
+              required
+              [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}">
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="invalid-feedback">
+              <div *ngIf="loginForm.get('username')?.errors?.['required']">
+                Username is required
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-control">
+            <i class="fas fa-lock icon"></i>
+            <input 
+              formControlName="pass" 
+              type="password" 
+              placeholder="Password" 
+              required
+              [ngClass]="{'is-invalid': loginForm.get('pass')?.invalid && loginForm.get('pass')?.touched}">
+            <div *ngIf="loginForm.get('pass')?.invalid && loginForm.get('pass')?.touched" class="invalid-feedback">
+              <div *ngIf="loginForm.get('pass')?.errors?.['required']">
+                Password is required
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn-primary">
+              Login
+            </button>
+          </div>
+          
+          <div class="divider">or continue with</div>
+          
+          <div class="social-login">
+            <button type="button" class="btn-circleg">
+              <i class="bi bi-google"></i>
+            </button>
+            <button type="button" class="btn-circlef">
+              <i class="bi bi-facebook"></i>
+            </button>
+            <button type="button" class="btn-circle">
+              <i class="bi bi-twitter"></i>
+            </button>
+          </div>
+          
+          <div class="footer">
+            Don't have an account? <a routerLink="/sign-up">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

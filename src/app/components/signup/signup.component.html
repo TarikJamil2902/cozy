@@ -1,0 +1,163 @@
+<div class="parent">
+  <div class="container">
+    <div class="left-section"></div>
+    <div class="right-section">
+      <div class="signup-container">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <h2 class="signup-title"><i class="fas fa-user-plus"></i> Create Account</h2>
+          
+          <!-- Success Message -->
+          <div *ngIf="isSignupSuccess" class="alert alert-success">
+            <i class="fas fa-check-circle"></i> Registration successful! Redirecting to login...
+          </div>
+          
+          <!-- Error Message -->
+          <div *ngIf="isSignupFailed" class="alert alert-danger">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+          </div>
+          
+          <!-- Name Fields -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-control">
+                <i class="fas fa-user icon"></i>
+                <input 
+                  formControlName="firstName" 
+                  type="text" 
+                  placeholder="First Name"
+                  [ngClass]="{'is-invalid': submitted && f['firstName'].errors}">
+                <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['firstName'].errors['required']">First name is required</div>
+                  <div *ngIf="f['firstName'].errors['minlength']">
+                    First name must be at least 2 characters
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-control">
+                <i class="fas fa-user icon"></i>
+                <input 
+                  formControlName="lastName" 
+                  type="text" 
+                  placeholder="Last Name"
+                  [ngClass]="{'is-invalid': submitted && f['lastName'].errors}">
+                <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['lastName'].errors['required']">Last name is required</div>
+                  <div *ngIf="f['lastName'].errors['minlength']">
+                    Last name must be at least 2 characters
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Email -->
+          <div class="form-control">
+            <i class="fas fa-envelope icon"></i>
+            <input 
+              formControlName="email" 
+              type="email" 
+              placeholder="Email Address"
+              [ngClass]="{'is-invalid': submitted && f['email'].errors}">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">
+                Please enter a valid email address
+              </div>
+            </div>
+          </div>
+          
+          <!-- Username -->
+          <div class="form-control">
+            <i class="fas fa-user-tag icon"></i>
+            <input 
+              formControlName="username" 
+              type="text" 
+              placeholder="Username"
+              [ngClass]="{'is-invalid': submitted && f['username'].errors}">
+            <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+              <div *ngIf="f['username'].errors['required']">Username is required</div>
+              <div *ngIf="f['username'].errors['minlength']">
+                Username must be at least 3 characters
+              </div>
+            </div>
+          </div>
+          
+          <!-- Password -->
+          <div class="form-control">
+            <i class="fas fa-lock icon"></i>
+            <input 
+              formControlName="pass" 
+              type="password" 
+              placeholder="Password"
+              [ngClass]="{'is-invalid': (submitted || f['pass'].touched) && f['pass'].errors}">
+            <div *ngIf="(submitted || f['pass'].touched) && f['pass'].errors" class="invalid-feedback">
+              <div *ngIf="f['pass'].errors['required']">Password is required</div>
+              <div *ngIf="f['pass'].errors['minlength']">
+                Password must be at least 8 characters
+              </div>
+              <div *ngIf="f['pass'].errors['passwordStrength']">
+                <ul class="password-requirements">
+                  <li [class.valid]="hasUppercase()">At least one uppercase letter</li>
+                  <li [class.valid]="hasLowercase()">At least one lowercase letter</li>
+                  <li [class.valid]="hasNumber()">At least one number</li>
+                  <li [class.valid]="hasSpecialChar()">At least one special character</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Confirm Password -->
+          <div class="form-control">
+            <i class="fas fa-lock icon"></i>
+            <input 
+              formControlName="confirmPassword" 
+              type="password" 
+              placeholder="Confirm Password"
+              [ngClass]="{'is-invalid': (submitted || f['confirmPassword'].touched) && 
+                (f['confirmPassword'].errors || signupForm.hasError('mustMatch'))}">
+            <div *ngIf="(submitted || f['confirmPassword'].touched) && 
+                (f['confirmPassword'].errors || signupForm.hasError('mustMatch'))" 
+                class="invalid-feedback">
+              <div *ngIf="f['confirmPassword'].errors?.['required']">Please confirm your password</div>
+              <div *ngIf="signupForm.hasError('mustMatch')">
+                Passwords do not match
+              </div>
+            </div>
+          </div>
+          
+          <!-- Role Selection -->
+          <div class="form-control">
+            <i class="fas fa-user-shield icon"></i>
+            <select 
+              formControlName="role" 
+              class="form-select"
+              [ngClass]="{'is-invalid': submitted && f['role'].errors}">
+              <option *ngFor="let role of roles" [value]="role.value">{{ role.label }}</option>
+            </select>
+            <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
+              Please select a role
+            </div>
+          </div>
+          
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="btn btn-primary btn-block"
+            [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            {{ loading ? 'Creating Account...' : 'Create Account' }}
+          </button>
+          
+          <!-- Login Link -->
+          <div class="text-center mt-4">
+            <p class="mb-0">Already have an account? 
+              <a routerLink="/log-in" class="text-primary">Log in</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+/* Base styles */
+.parent {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container styles */
+.signup-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+/* Signup box */
+.signup-box {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Typography */
+.signup-box h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+}
+
+.signup-box p {
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem;
+  color: #7f8c8d;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Input fields */
+input, select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e0e6ed;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+  
+  &:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    background-color: white;
+  }
+  
+  &.is-invalid {
+    border-color: #ff6b6b;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    }
+  }
+}
+
+/* Select dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Error messages */
+.invalid-feedback {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: block;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* Success/Error alerts */
+.alert {
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  
+  &-success {
+    background-color: #e8f8f0;
+    color: #27ae60;
+    border: 1px solid #a5e1c8;
+  }
+  
+  &-danger {
+    background-color: #ffebee;
+    color: #e74c3c;
+    border: 1px solid #ffcdd2;
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+}
+
+/* Footer link */
+.footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  
+  a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #357abd;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .parent {
+    padding: 1rem;
+  }
+  
+  .signup-box {
+    padding: 1.5rem;
+  }
+  
+  .signup-box h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.signup-box button {
+  padding: 10px;
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+.signup-box button:hover {
+  background: #0056b3;
+}
+
+.signup-box .footer {
+  font-size: 12px;
+  margin-top: 20px;
+  color: #999;
+}
+
+.signup-box .footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-box .footer a:hover {
+  text-decoration: underline;
+}
+
