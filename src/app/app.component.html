@@ -1,24 +1,9 @@
-
-
-
- <!-- <div><router-outlet></router-outlet></div>  -->
- <app-navbar *ngIf="sharedMessage=='true'"></app-navbar>
-
-
-<a routerLink="home"></a>
-<a routerLink="about"></a>
-<a routerLink="contact"></a>
-<a routerLink="shop"></a>
-<a routerLink="blog"></a>
-<a routerLink="cart"></a>
-<a routerLink="log-in"></a>
-<a routerLink="sign-up"></a>
-
-<div class="main-content">
-  <router-outlet></router-outlet>
+<div class="app-container">
+  <app-navbar *ngIf="sharedMessage === 'true'"></app-navbar>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
 </div>
-
-<app-footer></app-footer>
 
 <!-- <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="header">

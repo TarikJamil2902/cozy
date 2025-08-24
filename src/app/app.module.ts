@@ -44,8 +44,6 @@ import { OrderUpdateComponent } from './order-update/order-update.component';
 import { PaymentCreateComponent } from './payment-create/payment-create.component';
 import { PaymentListComponent } from './payment-list/payment-list.component';
 import { CheakoutListComponent } from './cheakout-list/cheakout-list.component';
-import { FooterComponent } from './components/footer/footer.component';
-
 
 @NgModule({
   declarations: [
@@ -88,8 +86,7 @@ import { FooterComponent } from './components/footer/footer.component';
      PaymentCreateComponent,
      PaymentListComponent,
      CheakoutListComponent,
-     FooterComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
